@@ -11,18 +11,16 @@ mp_hands = mp.solutions.hands
 def createLandmarks(coordinates):
     landmarks = []
     for coordinate in coordinates:
-        x = coordinate[0]
-        y = coordinate[1]
+        x = coordinate[0]/ 640
+        y = coordinate[1]/ 480
         z = coordinate[2]
-        # 創建 NormalizedLandmark 對象並添加到 landmarks 列表
+
         landmarks.append(landmark_pb2.NormalizedLandmark(x=x, y=y, z=z))
-    
-    # 創建 NormalizedLandmarkList 存儲所有的 landmarks
+
     hand_landmarks = landmark_pb2.NormalizedLandmarkList(landmark=landmarks)
     return hand_landmarks
 
 def drawHand():
-    # 初始化一個黑色背景的圖片
     img = np.zeros((480, 640, 3), dtype=np.uint8)
 
     while True:

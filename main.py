@@ -45,7 +45,7 @@ for file_name in file_names:
     word = labels.pop(0)
     if(database.insertWord(word)):
         path = folder_path + "/" + file_name
-        video_splitter.videoSplitter(path, "./frames", 24)
+        video_splitter.videoSplitter(path, "./frames", 16)
         image_names = os.listdir("./frames")
         for i, image_name in enumerate(image_names):
             result = hand_detection.handDetextion("./frames/" + image_name)
